@@ -3,3 +3,5 @@ user=_app seinfo=CameraServices name=com.google.android.apps.camera.services dom
 user=_app seinfo=CameraServices name=com.google.android.apps.camera.services:* domain=vendor_pcs_app type=app_data_file levelFrom=all
 user=system seinfo=platform name=com.google.pixel.camera.services domain=vendor_pbcs_app type=system_app_data_file levelFrom=all
 user=system seinfo=platform name=com.google.pixel.camera.services:* domain=vendor_pbcs_app type=system_app_data_file levelFrom=all
+
+user=bluetooth seinfo=default name=com.android.bluetooth domain=bluetooth type=bluetooth_data_file levelFrom=all isPrivApp=true
