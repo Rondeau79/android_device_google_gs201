@@ -11,17 +11,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.ipsec_tunnel_migration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnel_migration.xml
 
-# Modem
-ifneq ($(TARGET_IS_TABLET),true)
-PRODUCT_PACKAGES += dump_modem
-endif
-
-# Thermal
-PRODUCT_PACKAGES += android.hardware.thermal-service.pixel
-
-# Thermal utils
-PRODUCT_PACKAGES += thermal_symlinks
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
@@ -29,13 +18,6 @@ PRODUCT_PACKAGES += \
 # misc_writer
 PRODUCT_PACKAGES += \
     misc_writer
-
-# Boot control
-PRODUCT_PACKAGES += \
-    android.hardware.boot-service.default-pixel \
-    android.hardware.boot-service.default_recovery-pixel
-
-PRODUCT_SOONG_NAMESPACES += device/google/gs-common/bootctrl/aidl
 
 TARGET_BOARD_PLATFORM := gs201
 
@@ -54,9 +36,6 @@ PRODUCT_SOONG_NAMESPACES += \
 # HWUI
 TARGET_USES_VULKAN = true
 
-# GPU
-PRODUCT_PACKAGES += gpu_probe
-
 # Install the OpenCL ICD Loader
 PRODUCT_SOONG_NAMESPACES += external/OpenCL-ICD-Loader
 PRODUCT_PACKAGES += \
@@ -67,8 +46,8 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.vulkan.version-1_4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
 	frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
 	frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute.xml \
-	frameworks/native/data/etc/android.software.vulkan.deqp.level-2025-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
-	frameworks/native/data/etc/android.software.opengles.deqp.level-2025-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml
+	frameworks/native/data/etc/android.software.vulkan.deqp.level-2026-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
+	frameworks/native/data/etc/android.software.opengles.deqp.level-2026-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml
 
 # This device is shipped with 33 (Android T)
 PRODUCT_SHIPPING_API_LEVEL := 33
@@ -130,12 +109,6 @@ endif
 # Add sensor HAL AIDL product packages
 PRODUCT_PACKAGES += android.hardware.sensors-service.multihal
 
-# USB HAL
-PRODUCT_PACKAGES += \
-	android.hardware.usb-service
-PRODUCT_PACKAGES += \
-	android.hardware.usb.gadget-service
-
 # MIDI feature
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml
@@ -150,10 +123,6 @@ endif
 
 # IRQ rebalancing.
 include hardware/google/pixel/rebalance_interrupts/rebalance_interrupts.mk
-
-# PowerStats HAL
-PRODUCT_PACKAGES += \
-	android.hardware.power.stats-service.pixel
 
 # Camera
 PRODUCT_SOONG_NAMESPACES += \
@@ -255,10 +224,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 PRODUCT_COPY_FILES += \
 	device/google/gs201/default-permissions.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/default-permissions/default-permissions.xml \
 	device/google/gs201/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
-
-PRODUCT_PACKAGES += \
-	android.hardware.health-service.gs201 \
-	android.hardware.health-service.gs201_recovery \
 
 # Audio HAL configurations
 PRODUCT_COPY_FILES += \
@@ -409,7 +374,6 @@ PRODUCT_PACKAGES += \
     SystemUIGoogleOverlayVendorGs201 \
     TeleServiceOverlayProductGs201 \
     TeleServiceOverlayVendorGs201 \
-    TelecomOverlayProductGs201 \
     TelephonyProviderOverlayProductGs201
 
 ifneq ($(TARGET_IS_TABLET),true)
